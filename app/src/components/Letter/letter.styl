@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:700")
+
+
+/*
+ * Colors
+ */
+$yellow = #f4ee98
+$yellow-dark = desaturate(darken($yellow, 10%), 20%);
+$green = #247354
+
+
+/*
+ * Classes
+ */
+.letter
+	width: 6em
+	height: 6em
+	background: $yellow
+	display: flex
+	align-items: center
+	justify-content: center
+	position: relative
+	border-radius: .2em
+	box-shadow: .1em .1em 0 .1em $yellow-dark, .15em .15em 0 .15em $yellow-dark, .2em .2em 0 .2em $yellow-dark
+	margin: .5em
+
+	&-symbol
+	&-points
+		color: $green
+		font-family: Poppins
+		font-weight: 700
+
+	&-symbol
+		font-size: 4.8em
+		text-transform: uppercase
+		padding-right: .05em
+	&-points
+		position: absolute
+		bottom: .5em
+		left: 3.7em
+		width: 1em
+		text-align: center
+		font-size: 1.2em
