@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 /*
  * Local import
  */
-
+import { getLetterPoints } from 'src/datas/letters';
 
 /*
  * Code
@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 const Letter = ({ letter }) => (
   <div className="letter">
     <div className="letter-symbol">{letter}</div>
+    <div className="letter-points">{getLetterPoints(letter) || ''}</div>
   </div>
 );
 Letter.propTypes = {

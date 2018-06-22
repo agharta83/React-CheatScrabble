@@ -7,8 +7,8 @@ import React from 'react';
 /*
  * Local import
  */
-import Board from 'src/components/Board';
-import Letters from 'src/components/Letters';
+import Board from 'src/containers/Board';
+import Letters from 'src/containers/Letters';
 
 
 /*
@@ -16,7 +16,7 @@ import Letters from 'src/components/Letters';
  */
 const App = () => (
   <div id="app">
-    <Board status="typing" />
+    <Board />
     <Letters />
   </div>
 );

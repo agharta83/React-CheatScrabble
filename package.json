@@ -44,6 +44,7 @@
   "scripts": {
     "build": "brunch build",
     "start": "brunch watch --server",
+    "start:server": "node server/index.js",
     "save-deps": "rm -rf node_modules && npm update --save && npm update --save-dev",
     "lint": "eslint --fix .",
     "test": "mocha tests/.setup.js tests/**/*.test.js",

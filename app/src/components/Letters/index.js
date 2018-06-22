@@ -2,26 +2,65 @@
  * Npm import
  */
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 /*
  * Local import
  */
 import Letter from 'src/components/Letter';
-
+import { isLetter } from 'src/datas/letters';
 
 /*
  * Code
  */
-const Letters = () => (
-  <div id="letters">
-    <Letter letter="r" />
-    <Letter letter="e" />
-    <Letter letter="a" />
-    <Letter letter="c" />
-    <Letter letter="t" />
-  </div>
-);
+class Letters extends React.Component {
+  /**
+   * PropTypes
+   */
+  static propTypes = {
+    letters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    addLetter: PropTypes.func.isRequired,
+  }
+
+  /**
+   * Lifecycle
+   */
+  componentDidMount() {
+    // Ecoute du keydown sur le document
+    document.addEventListener('keydown', this.handleKey);
+  }
+
+  /**
+   * Actions
+   */
+  handleKey = (evt) => {
+    const { key } = evt;
+    const { addLetter } = this.props;
+    // Je passe en minuscule pour garantir le bon fonctionement de isLetter
+    const keyPressed = key.toLowerCase();
+
+    // Si le caractère est une lettre valide
+    if (isLetter(keyPressed)) {
+      addLetter(keyPressed);
+    }
+  }
+
+  /**
+   * Rendu
+   */
+  render() {
+    // Recup du state
+    const { letters } = this.props;
+
+    return (
+      <div id="letters">
+        {letters.map((letter, index) => (
+          <Letter key={index} letter={letter} />
+        ))}
+      </div>
+    );
+  }
+}
 
 
 /*

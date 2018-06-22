@@ -26,3 +26,7 @@ créer une propriété `status` dans le state de notre store.
 
 * A l'aide du composant `<Word />`, afficher « loading », mais avec des lettres
 Scrabble :smiley:
+
+---------
+
+- Connecter à un serveur pour recup des possibilités de mots

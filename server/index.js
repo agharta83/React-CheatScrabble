@@ -26,6 +26,19 @@ app.get('/', (req, res) => {
   `);
 });
 
+const permutatorAll = (arr) => {
+  let poss = [];
+  if( arr.length == 1 ) return arr;
+  for( let k in arr ) {
+    let letter = arr[k];
+    permutatorAll(arr.join('').replace(letter,'').split('')).concat('').map((subtree) => {
+        poss.push([letter].concat(subtree));
+    });
+  }
+  return poss;
+};
+
+
 const permutator = (inputArr) => {
   let result = [];
   const permute = (arr, m = []) => {
@@ -47,7 +60,7 @@ const permutator = (inputArr) => {
 app.post('/words', (req, res) => {
   const { letters } = req.body;
   if (letters && typeof letters === 'object' && letters.length === 7) {
-    const comb = permutator(letters).map(perm => perm.join(''));
+    const comb = permutatorAll(letters).map(perm => perm.join(''));
     const ok = words.filter(word => comb.includes(word));
     res.send(ok);
   }
